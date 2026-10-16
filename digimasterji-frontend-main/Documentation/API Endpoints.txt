@@ -1,0 +1,109 @@
+This is a comprehensive API design following RESTful principles. It is structured to support the "Netflix-style" profile switching, background quiz generation, and robust offline synchronization.
+
+I have grouped these into functional routers (Auth, Profiles, Chat, Sync, Quiz).
+
+### 1\. Authentication & Master Account (`/auth` & `/account`)
+
+*Handles the "Netflix Account Owner" (Parent/Teacher) logic.*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **POST** | `/auth/register` | Register a new master account (Family/Classroom). | `{email, password, phone, full_name}` | `{access_token, user_id}` |
+| **POST** | `/auth/token` | Login to the master account. | `{username, password}` | `{access_token, token_type}` |
+| **GET** | `/account/me` | Get master account details and settings. | *None* | User Object |
+| **PUT** | `/account/settings` | Update global settings (e.g., Data Saver Mode). | `{data_saver_mode: bool, ...}` | Updated Settings |
+
+-----
+
+### 2\. Profile Management (`/profiles`)
+
+*Handles the individual learner profiles (The "Who is watching?" screen).*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **GET** | `/profiles` | List all profiles under the logged-in master account. | *None* | `[ {id, name, avatar, grade...} ]` |
+| **POST** | `/profiles` | Create a new student profile. | `{name, age, grade, language, avatar}` | Profile Object |
+| **GET** | `/profiles/{id}` | Get specific profile stats (XP, streaks). | *None* | Profile Object |
+| **PUT** | `/profiles/{id}` | Update profile (e.g., change Avatar or Language). | `{avatar, language...}` | Updated Profile |
+| **DELETE** | `/profiles/{id}` | Delete a student profile. | *None* | `{status: "ok"}` |
+| **POST** | `/profiles/{id}/access`| **Critical:** Generate a temporary access token for this specific profile (used for chat sessions). | *None* | `{profile_token}` |
+
+-----
+
+### 3\. Chat & RAG Interaction (`/chat`)
+
+*The core learning loop. Supports streaming for real-time feel.*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **POST** | `/chat/sessions` | Start a new conversation thread. | `{profile_id, topic?}` | `{conversation_id, created_at}` |
+| **GET** | `/chat/sessions` | Get chat history list for the current profile. | `?limit=20&offset=0` | `[ {id, title, date...} ]` |
+| **GET** | `/chat/{id}/history` | Fetch full message history for a specific conversation. | *None* | `[ {role, content, timestamp...} ]` |
+| **POST** | `/chat/{id}/message` | **Main Endpoint:** Send a message to AI. Triggers RAG & Ollama. | `{content, audio_blob?}` | `{response, audio_url, rag_sources}` |
+| **POST** | `/chat/{id}/audio` | Upload voice query (Speech-to-Text processing). | `FormData(file)` | `{transcribed_text}` |
+
+> **Note:** The `/message` endpoint will run the "Ollama" inference. If running purely offline, this endpoint connects to the local Ollama instance.
+
+-----
+
+### 4\. Synchronization (`/sync`)
+
+*Crucial for "Low Bandwidth" & "Offline" support. The frontend stores data in IndexedDB/PouchDB and pushes here when online.*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **POST** | `/sync/push` | Bulk upload offline messages/quiz results to MongoDB. | `[{type: "msg", data: ...}, {type: "quiz", ...}]` | `{synced_count, errors}` |
+| **GET** | `/sync/pull` | Fetch updates that happened on other devices. | `?last_sync_timestamp=...` | `{new_messages, new_quizzes}` |
+
+-----
+
+### 5\. Quiz & Gamification (`/quizzes`)
+
+*Handles the daily streak and AI assessment logic.*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **POST** | `/quizzes/generate` | Trigger AI to generate a quiz based on recent chats. | `{conversation_id, difficulty}` | `{quiz_id, status: "processing"}` |
+| **GET** | `/quizzes/pending` | Check if any generated quizzes are ready to be taken. | `?profile_id=...` | `[ {quiz_id, topic, status} ]` |
+| **GET** | `/quizzes/{id}` | Fetch the actual quiz questions. | *None* | `{questions: [ {text, options...} ]}` |
+| **POST** | `/quizzes/{id}/submit`| Submit answers. Calculates score & updates XP. | `{answers: {q_id: option_id}}` | `{score, xp_earned, feedback}` |
+| **GET** | `/leaderboard` | Get leaderboard data (Family or Global). | `?scope=family` | `[ {name, xp, streak} ]` |
+
+-----
+
+### 6\. Admin & Knowledge Base (`/admin`)
+
+*For managing the RAG content (Teachers/Admins).*
+
+| Method | Endpoint | Description | Request Body | Response |
+| :--- | :--- | :--- | :--- | :--- |
+| **POST** | `/admin/upload` | Upload PDF/Text textbook content for RAG. | `FormData(file)` | `{chunks_processed: 50}` |
+| **POST** | `/admin/index` | Trigger re-indexing of vector embeddings. | *None* | `{status: "started"}` |
+
+-----
+
+### 7\. Recommended Folder Structure (FastAPI)
+
+To keep this organized, structure your backend like this:
+
+```text
+backend/
+├── app/
+│   ├── main.py            # App entry point
+│   ├── models/            # Pydantic Schemas (Request/Response validation)
+│   ├── database/          # MongoDB connection & CRUD helpers
+│   ├── routers/           # API Routes
+│   │   ├── auth.py
+│   │   ├── profiles.py
+│   │   ├── chat.py
+│   │   ├── sync.py        # Offline sync logic
+│   │   └── quizzes.py
+│   ├── services/          # Business Logic
+│   │   ├── llm_service.py # Ollama integration
+│   │   ├── rag_service.py # Vector DB search
+│   │   └── gamify.py      # XP & Streak logic
+│   └── utils/
+│       └── security.py    # JWT handling
+```
+
+**Next Step:** Would you like me to write the **FastAPI code for the `/sync/push` endpoint**? That is the most complex part of the offline logic, as it needs to handle conflict resolution when uploading local data.

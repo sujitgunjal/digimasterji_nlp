@@ -1,0 +1,21 @@
+{
+  "synthetic": false,
+  "profile": {
+    "name": "Aarav",
+    "age": 12,
+    "grade_level": "6th",
+    "preferred_language": "English"
+  },
+  "items": [
+    {
+      "id": "replace-with-a-real-chunk-id",
+      "question": "What gas do plants release during photosynthesis?",
+      "gold_answer": "Plants release oxygen during photosynthesis.",
+      "gold_chunk_ids": ["replace-with-the-mongodb-id-of-the-chunk-that-contains-the-answer"],
+      "subject": "Biology",
+      "question_type": "factual",
+      "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Helium"],
+      "correct_answer": "Oxygen"
+    }
+  ]
+}

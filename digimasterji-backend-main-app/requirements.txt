@@ -1,0 +1,22 @@
+fastapi
+pydantic
+pydantic-core
+python-dotenv
+pymongo
+httpx
+sentence-transformers
+torch
+openai-whisper
+numpy
+gTTS
+deepgram-sdk
+email-validator
+# Add your preferred PDF library, e.g.:
+PyPDF2
+apscheduler
+motor
+python-jose
+passlib
+python-multipart
+bcrypt
+pymupdf

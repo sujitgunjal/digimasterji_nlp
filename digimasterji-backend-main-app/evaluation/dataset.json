@@ -1,0 +1,92 @@
+{
+  "synthetic": true,
+  "note": "Questions were generated from the gold chunk. Retrieval scores on this file are higher than scores on real student questions.",
+  "profile": {
+    "name": "Aarav",
+    "age": 12,
+    "grade_level": "6th",
+    "preferred_language": "English"
+  },
+  "items": [
+    {
+      "id": "6acba528ce25fe5cf2b740fe",
+      "question": "What is the term used to describe chemical and physical factors that induce mutations?",
+      "gold_answer": "However, there are many chemical and physical factors that induce mutations. These are referred to as mutagens.",
+      "gold_chunk_ids": [
+        "6acba528ce25fe5cf2b740fe"
+      ],
+      "gold_source_file": "lebo104.pdf",
+      "gold_snippet": "inuously from\none end to the other in each chromatid, in a highly supercoiled form. Therefore loss (deletions) or gain (insertion/duplication) of a segment of\nDNA, result in altera",
+      "subject": "Biology",
+      "question_type": "definition",
+      "options": [
+        "Point mutations",
+        "Mutagens",
+        "Pedigree analysis",
+        "Frame-shift mutations"
+      ],
+      "correct_answer": "Mutagens",
+      "synthetic": true
+    },
+    {
+      "id": "6ac0deb7730ed64db1b52c8c",
+      "question": "What is the ratio of the magnitudes of electric force to the gravitational force between two protons at a distance r apart?",
+      "gold_answer": "the ratio of the magnitudes of electric force to the gravitational force between two protons at a distance r apart is: Fe/FG = 1.3 × 1036",
+      "gold_chunk_ids": [
+        "6ac0deb7730ed64db1b52c8c"
+      ],
+      "gold_source_file": "leph101.pdf",
+      "gold_snippet": ".11 × 10–31 kg)\nSolution\n(a) (i) The electric force between an electron and a proton at a distance\nr apart is:\n2\n2\n0\n1\n4\ne\ne\nF\nr\nε\n= −\nπ\nwhere the negative sign indicates that the ",
+      "subject": "Physics",
+      "question_type": "numerical",
+      "options": [
+        "2.4 × 1039",
+        "1.3 × 1036",
+        "1.9 × 10–34",
+        "230 N"
+      ],
+      "correct_answer": "1.3 × 1036",
+      "synthetic": true
+    },
+    {
+      "id": "6acb91c398101a40f6db3368",
+      "question": "What is the definition of osmotic pressure according to the text?",
+      "gold_answer": "The osmotic pressure of a solution is the excess pressure that must be applied to a solution to prevent osmosis, i.e., to stop the passage of solvent molecules through a semipermeable membrane into the solution.",
+      "gold_chunk_ids": [
+        "6acb91c398101a40f6db3368"
+      ],
+      "gold_source_file": "lech101.pdf",
+      "gold_snippet": "21\nSolutions\nmolecules, like water, can pass through these holes but the passage of\nbigger molecules like solute is hindered. Membranes having this kind\nof properties are known as ",
+      "subject": "Chemistry",
+      "question_type": "definition",
+      "options": [
+        "The pressure exerted by solute molecules against a semipermeable membrane",
+        "The excess pressure that must be applied to a solution to prevent osmosis",
+        "The flow of solvent molecules from a dilute solution to a concentrated solution",
+        "The pressure required to force solute molecules through a semipermeable membrane"
+      ],
+      "correct_answer": "The excess pressure that must be applied to a solution to prevent osmosis",
+      "synthetic": true
+    },
+    {
+      "id": "6ac0deb7730ed64db1b52cb4",
+      "question": "What is the flux through the side of the cylinder?",
+      "gold_answer": "For any point on the side of the cylinder E is perpendicular to DS and hence E.DS = 0. Therefore, the flux out of the side of the cylinder is zero.",
+      "gold_chunk_ids": [
+        "6ac0deb7730ed64db1b52cb4"
+      ],
+      "gold_source_file": "leph101.pdf",
+      "gold_snippet": "her is at\nx = –10 cm (Fig. 1.25). (a) What is the net outward flux through each\nflat face? (b) What is the flux through the side of the cylinder? (c) What is the net outward flux t",
+      "subject": "Physics",
+      "question_type": "factual",
+      "options": [
+        "1.57 N m2 C–1",
+        "3.14 N m2 C–1",
+        "zero",
+        "2.78 × 10–11 C"
+      ],
+      "correct_answer": "zero",
+      "synthetic": true
+    }
+  ]
+}

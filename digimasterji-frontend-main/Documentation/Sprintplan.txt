@@ -1,0 +1,134 @@
+Understood. I have locked in all the constraints:
+* **Tech Stack:** FastAPI, React (Vite), MongoDB, Ollama (Gemma 2 12B), Whisper Medium, AI4Bharat TTS.
+* **Team:** 4 Developers (2 FE, 2 BE).
+* **Platform:** Strict Web App (PWA for offline capability).
+* **Data Policy:** Audio files are transient (discarded after processing).
+* **Deployment:** Agnostic/Undecided (Plan will focus on containerization).
+
+Here is the detailed **Project Execution Plan** designed for your team and GitLab workflow.
+
+---
+
+### 1. GitLab Workflow & Branching Strategy
+
+We will use a **Feature Branch Workflow** enforced via GitLab Protected Branches.
+
+#### **Branch Hierarchy**
+1.  **`main` (Protected):** Production-ready code. Deploys to live/demo environment.
+2.  **`develop` (Protected):** The integration branch. All features merge here for testing.
+3.  **`feature/...`:** Temporary branches for new capabilities.
+4.  **`fix/...`:** Bug fixes.
+
+#### **Naming Conventions**
+* **Branches:** `type/component-description`
+    * Examples: `feature/fe-auth-login`, `feature/be-rag-ingestion`, `fix/be-sync-timestamp`
+* **Commits:** `[Component] Action - Description`
+    * Examples: `[FE-Chat] Add microphone permission logic`, `[BE-Quiz] Fix JSON parsing in Ollama response`
+
+#### **Merge Request (MR) Rules**
+* **Approvals:** Minimum 1 peer review required (Frontend reviews Frontend, Backend reviews Backend).
+* **CI Pipeline (Recommended):**
+    * *Frontend:* ESLint check + Build test.
+    * *Backend:* Flake8/Black check + Pydantic model validation.
+
+---
+
+### 2. Team Roles & Responsibilities
+
+| Role | Developer | Key Responsibilities |
+| :--- | :--- | :--- |
+| **Frontend A (UI Lead)** | Dev 1 | UI Architecture, Routing, CSS/Tailwind, Animation, Dashboards. |
+| **Frontend B (Logic Lead)** | Dev 2 | API Integration, State Management, IndexedDB (Offline), Audio Recording. |
+| **Backend A (SysArch)** | Dev 3 | MongoDB Design, Auth, Sync Logic, Docker, API Structure. |
+| **Backend B (AI Lead)** | Dev 4 | Ollama Integration, RAG Pipeline, Whisper/TTS wrapping, Prompt Engineering. |
+
+---
+
+### 3. Detailed Sprint Plan (8 Weeks)
+
+#### **Sprint 0: Initialization & Architecture (Week 1)**
+*Goal: "Hello World" on both ends, Repos connected, Docker running.*
+
+* **[BE-A]** Initialize FastAPI repo, setup Docker Compose (Mongo + API).
+* **[BE-B]** Setup Python scripts to test loading Gemma, Whisper, and TTS locally.
+* **[FE-A]** Initialize React+Vite, setup Tailwind, folder structure.
+* **[FE-B]** Configure Axios instance and basic PWA Service Worker registration.
+
+#### **Sprint 1: Accounts & Profiles ("The Netflix Layer") (Week 2)**
+*Goal: Users can Register, Login, and Switch Profiles.*
+
+* **[BE-A]** Implement `users` and `profiles` Collections & Pydantic models.
+* **[BE-A]** Build Auth endpoints: `/auth/register`, `/auth/login`, `/profiles/*`.
+* **[FE-A]** Build Login, Register, Profile Selection, and Create Profile pages.
+* **[FE-B]** Implement JWT handling (storage in secure cookie/local storage) and Profile Context.
+
+#### **Sprint 2: Core Chat & RAG (Text Only) (Week 3-4)**
+*Goal: Functional text chat with STEM context.*
+
+* **[BE-A]** Implement `conversations` and `messages` endpoints.
+* **[BE-B]** Build RAG Ingestion (`/admin/upload`): PDF parsing $\to$ Chunking $\to$ Vector Store.
+* **[BE-B]** Build `/chat/message`: Connect User Input $\to$ Vector Search $\to$ Ollama Prompt $\to$ Response.
+* **[FE-A]** Build Chat UI: Sidebar (History), Chat Window, Message Bubbles.
+* **[FE-B]** Connect Chat UI to API. Handle "Streaming" text if possible (or loading states).
+
+#### **Sprint 3: The Voice Layer (Weeks 5)**
+*Goal: Speak to the app, App speaks back.*
+
+* **[BE-B]** **STT:** Implement `/chat/{id}/audio`. Logic: Save temp file $\to$ Whisper $\to$ Return Text $\to$ Delete file.
+* **[BE-B]** **TTS:** Implement TTS logic in `/chat/message` response. Return Base64 audio or temp URL.
+* **[FE-B]** **Recorder:** Implement `MediaRecorder` API. Handle permissions. Blob upload.
+* **[FE-A]** **Player:** specific UI for Audio Messages (Play/Pause, Waveform visualization).
+
+#### **Sprint 4: Offline Capability & Sync (Week 6)**
+*Goal: App works without internet.*
+
+* **[BE-A]** Implement `/sync/push` (Receive local data) and `/sync/pull` (Send missed updates).
+* **[FE-B]** **Dexie.js:** Create local DB schema mirroring Mongo.
+* **[FE-B]** **Sync Logic:** "Network Online" event listener. If online $\to$ Push local chats $\to$ Pull updates.
+* **[FE-A]** **Indicators:** UI badges for "Offline Mode" and "Syncing...".
+
+#### **Sprint 5: Gamification & Quizzes (Week 7)**
+*Goal: Retention and Assessment.*
+
+* **[BE-B]** **Quiz Gen:** Background task where Ollama analyzes chat history $\to$ Generates JSON Quiz.
+* **[BE-A]** Store Quizzes and update `gamification` object (XP, Streaks) on submission.
+* **[FE-A]** Build Quiz UI (Question Cards, Result Modal, Confetti animation).
+* **[FE-A]** Build Dashboard Widgets (Streak flame, XP Progress bar).
+
+#### **Sprint 6: Polish & Testing (Week 8)**
+* **[All]** End-to-end testing.
+* **[BE]** Performance tuning (Caching RAG results).
+* **[FE]** Accessibility check (Screen readers, Tab navigation).
+
+---
+
+### 4. Task Sequence Checklist
+
+#### **Backend (FastAPI)**
+1.  [ ] **Repo Init:** `git init`, `poetry init`, Dockerfile.
+2.  [ ] **DB Connection:** Async Motor client setup for MongoDB.
+3.  [ ] **Auth Module:** JWT logic, Password hashing.
+4.  [ ] **Endpoints - Profiles:** CRUD operations.
+5.  [ ] **AI Service - RAG:** PDF text extractor + Vector embedding logic.
+6.  [ ] **AI Service - LLM:** Function to call local Ollama URL with system prompts.
+7.  [ ] **Endpoints - Chat:** Logic to Stitch Context + Query $\to$ LLM.
+8.  [ ] **AI Service - Audio:** Whisper Wrapper (blob $\to$ text).
+9.  [ ] **AI Service - TTS:** Parler Wrapper (text $\to$ audio).
+10. [ ] **Endpoints - Sync:** Complex logic to merge local vs server data.
+11. [ ] **Endpoints - Quiz:** Logic to parse LLM JSON output into DB format.
+
+#### **Frontend (React)**
+1.  [ ] **Repo Init:** Vite, Tailwind, ESLint.
+2.  [ ] **Router:** Setup Public vs Private routes.
+3.  [ ] **Auth Pages:** Forms with validation.
+4.  [ ] **State Manager:** Setup Context/Zustand for User/Profile data.
+5.  [ ] **Local DB:** Initialize Dexie.js with `messages` and `quizzes` tables.
+6.  [ ] **Chat UI:** The visual components (bubbles, input).
+7.  [ ] **Chat Logic:** Hook to handle: Input $\to$ Local DB $\to$ UI $\to$ Try API send.
+8.  [ ] **Audio Recorder:** Component to capture microphone stream.
+9.  [ ] **Audio Player:** Component to play Blobs (offline) or URLs (online).
+10. [ ] **Sync Worker:** Background process for data synchronization.
+11. [ ] **Quiz UI:** Interactive form for taking quizzes.
+12. [ ] **Dashboard:** Visualizing the stats.
+
+This plan provides a clear path from zero to a fully functional, offline-capable AI tutor. You may proceed with setting up the repository.

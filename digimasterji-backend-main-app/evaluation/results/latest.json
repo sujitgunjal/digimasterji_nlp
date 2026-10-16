@@ -1,0 +1,599 @@
+{
+  "dataset": "C:\\Users\\sujit\\OneDrive\\Desktop\\nlp\\ca3\\digimasterji-backend-main-app\\evaluation\\dataset.json",
+  "synthetic": true,
+  "retrieval_only": false,
+  "configs": [
+    {
+      "name": "gemma_no_retrieval",
+      "use_rag": false,
+      "limit": 0,
+      "min_score": null
+    },
+    {
+      "name": "rag_top5_0.3",
+      "use_rag": true,
+      "limit": 5,
+      "min_score": 0.3
+    },
+    {
+      "name": "rag_top3_0.5",
+      "use_rag": true,
+      "limit": 3,
+      "min_score": 0.5
+    }
+  ],
+  "summary": [
+    {
+      "config": "gemma_no_retrieval",
+      "recall_at_5": null,
+      "mrr": null,
+      "context_precision_at_5": null,
+      "faithfulness": null,
+      "answer_correctness": 0.75,
+      "answer_relevancy": 1.0,
+      "language_match": 1.0,
+      "median_e2e_ms": 3139.743599999747,
+      "median_retrieval_ms": null,
+      "empty_retrieval_rate": null,
+      "failure_rate": 0.0,
+      "quiz_accuracy": 1.0,
+      "quiz_accuracy_by_type": {
+        "definition": 1.0,
+        "factual": 1.0,
+        "numerical": 1.0
+      },
+      "quiz_completion_rate": 1.0,
+      "items": 4
+    },
+    {
+      "config": "rag_top5_0.3",
+      "recall_at_5": 1.0,
+      "mrr": 0.875,
+      "context_precision_at_5": 0.2,
+      "faithfulness": 1.0,
+      "answer_correctness": 1.0,
+      "answer_relevancy": 1.0,
+      "language_match": 1.0,
+      "median_e2e_ms": 2735.993650000637,
+      "median_retrieval_ms": 78.42055000128312,
+      "empty_retrieval_rate": 0.0,
+      "failure_rate": 0.0,
+      "quiz_accuracy": 1.0,
+      "quiz_accuracy_by_type": {
+        "definition": 1.0,
+        "factual": 1.0,
+        "numerical": 1.0
+      },
+      "quiz_completion_rate": 1.0,
+      "items": 4
+    },
+    {
+      "config": "rag_top3_0.5",
+      "recall_at_5": 1.0,
+      "mrr": 0.875,
+      "context_precision_at_5": 0.2,
+      "faithfulness": 1.0,
+      "answer_correctness": 1.0,
+      "answer_relevancy": 1.0,
+      "language_match": 1.0,
+      "median_e2e_ms": 2491.5555500001574,
+      "median_retrieval_ms": 78.42055000128312,
+      "empty_retrieval_rate": 0.0,
+      "failure_rate": 0.0,
+      "quiz_accuracy": 1.0,
+      "quiz_accuracy_by_type": {
+        "definition": 1.0,
+        "factual": 1.0,
+        "numerical": 1.0
+      },
+      "quiz_completion_rate": 1.0,
+      "items": 4
+    }
+  ],
+  "items": [
+    {
+      "id": "6acba528ce25fe5cf2b740fe",
+      "question": "What is the term used to describe chemical and physical factors that induce mutations?",
+      "configs": [
+        {
+          "config": "gemma_no_retrieval",
+          "retrieval_ms": null,
+          "retrieval_error": null,
+          "recall_at_5": null,
+          "mrr": null,
+          "context_precision_at_5": null,
+          "empty_retrieval": null,
+          "e2e_ms": 3076.163699999597,
+          "failure": false,
+          "answer": "Namaste, Aarav! That is a very smart question. You are diving into the world of genetics, which is like the \"instruction manual\" for every living thing.\n\nThe term you are looking for is **Mutagens**.\n\nTo make it simple, think of your DNA as a carefully written recipe book that tells your body how to grow and work. A **mutagen** is like a \"mistake-maker.\" It is any physical or chemical agent that causes a change (a mutation) in that DNA recipe.\n\nHere are two easy examples to help you understand:\n\n1.  **Physical Mutagens:** Think of the bright sun. The UV rays from the sun are physical factors. If someone stays in the sun too long without protection, those rays can act as mutagens and damage the skin cells.\n2.  **Chemical Mutagens:** Certain strong chemicals used in some industrial pesticides or smoke from burning plastic can act as chemical mutagens if they enter the body.\n\nDoes that make sense, Aarav? To make sure we've got it, can you tell me: if a certain type of radiation causes a change in a plant's DNA, would that radiation be called a *mutagen* or a *mutation*?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [],
+          "faithfulness": null,
+          "quiz_choice": "Mutagens",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        },
+        {
+          "config": "rag_top5_0.3",
+          "retrieval_ms": 48192.99239999964,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6acba528ce25fe5cf2b740fe",
+            "6acba528ce25fe5cf2b740ff",
+            "6acba528ce25fe5cf2b740e4",
+            "6acba528ce25fe5cf2b740e9",
+            "6acba528ce25fe5cf2b740f8"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6acba528ce25fe5cf2b740fe",
+            "6acba528ce25fe5cf2b740ff",
+            "6acba528ce25fe5cf2b740e4",
+            "6acba528ce25fe5cf2b740e9",
+            "6acba528ce25fe5cf2b740f8"
+          ],
+          "e2e_ms": 50300.61289999867,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question. It shows you are paying close attention to how our genetic material works.\n\nThe term used to describe chemical and physical factors that cause mutations is **mutagens**.\n\nTo help you understand this better, think of your DNA like a carefully written recipe book for your body. A **mutation** is like a typo or a mistake in that recipe. A **mutagen** is something from the outside that \"causes\" that typo to happen.\n\nFor example, UV radiation from the sun is a well-known mutagen. This is why we are often told to protect our skin from too much direct sunlight!\n\nJust to make sure we've got this, can you tell me: if a certain chemical causes a change in an organism's DNA, would we call that chemical a mutation or a mutagen?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "The term used to describe chemical and physical factors that cause mutations is mutagens.",
+              "supported": true
+            },
+            {
+              "text": "A mutation is like a typo or a mistake in the DNA recipe.",
+              "supported": true
+            },
+            {
+              "text": "A mutagen is something from the outside that causes that typo to happen.",
+              "supported": true
+            },
+            {
+              "text": "UV radiation from the sun is a well-known mutagen.",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "Mutagens",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        },
+        {
+          "config": "rag_top3_0.5",
+          "retrieval_ms": 48192.99239999964,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6acba528ce25fe5cf2b740fe",
+            "6acba528ce25fe5cf2b740ff",
+            "6acba528ce25fe5cf2b740e4",
+            "6acba528ce25fe5cf2b740e9",
+            "6acba528ce25fe5cf2b740f8"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6acba528ce25fe5cf2b740fe",
+            "6acba528ce25fe5cf2b740ff",
+            "6acba528ce25fe5cf2b740e4"
+          ],
+          "e2e_ms": 50208.894399998826,
+          "failure": false,
+          "answer": "Hello Aarav! That is a very good question. It shows you are paying close attention to how our genetic material can change.\n\nThe term used to describe chemical and physical factors that cause mutations is **mutagens**.\n\nTo help you understand this better, think of your DNA like a carefully written recipe book for your body. A **mutation** is like a typo or a mistake in that recipe. A **mutagen** is something from the outside world that causes that typo to happen.\n\nFor example, UV radiation from the sun is a common physical mutagen. This is why we are often told to protect our skin from too much sun!\n\nJust to make sure we've got it, can you tell me: if a certain chemical causes a change in an organism's DNA, what would we call that chemical?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "The term used to describe chemical and physical factors that cause mutations is mutagens.",
+              "supported": true
+            },
+            {
+              "text": "UV radiation from the sun is a common physical mutagen.",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "Mutagens",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        }
+      ]
+    },
+    {
+      "id": "6ac0deb7730ed64db1b52c8c",
+      "question": "What is the ratio of the magnitudes of electric force to the gravitational force between two protons at a distance r apart?",
+      "configs": [
+        {
+          "config": "gemma_no_retrieval",
+          "retrieval_ms": null,
+          "retrieval_error": null,
+          "recall_at_5": null,
+          "mrr": null,
+          "context_precision_at_5": null,
+          "empty_retrieval": null,
+          "e2e_ms": 3968.6110999991797,
+          "failure": false,
+          "answer": "Hello Aarav! That is a very advanced and exciting question for a 6th grader. You are thinking like a real scientist!\n\nTo understand this, imagine two protons. Protons are like tiny magnets that push each other away (Electric Force) but also like tiny weights that pull each other together (Gravitational Force). \n\nHere is how we look at it step-by-step:\n\n1. **The Electric Force ($F_e$):** This is the \"push\" between the protons. Because protons have a positive charge, they repel each other very strongly.\n2. **The Gravitational Force ($F_g$):** This is the \"pull\" between them. Everything with mass pulls on everything else, but protons are so incredibly light that this pull is very, very weak.\n3. **The Comparison:** When we divide the Electric Force by the Gravitational Force, we find that the electric push is **massive** compared to the gravitational pull.\n\n**A Simple Analogy:**\nImagine the gravitational force is like a tiny ant trying to pull a rope, while the electric force is like a giant elephant pushing the rope away. The elephant is millions and millions of times stronger than the ant!\n\n**The Result:**\nIf you do the math using the physics formulas, the ratio is approximately **$10^{36}$**. That is a 1 followed by 36 zeros! This tells us that in the world of tiny atoms, electricity is the \"boss,\" and gravity is almost too small to notice.\n\n**Quick Check for you, Aarav:**\nIf the electric force is much stronger than the gravitational force between two protons, do you think the protons will move toward each other or push away from each other?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [],
+          "faithfulness": null,
+          "quiz_choice": "1.3 × 1036",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "numerical"
+        },
+        {
+          "config": "rag_top5_0.3",
+          "retrieval_ms": 80.65470000110508,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6ac0deb7730ed64db1b52c8c",
+            "6ac0deb7730ed64db1b52c8d",
+            "6ac0deb7730ed64db1b52cbc",
+            "6ac0deb7730ed64db1b52c87",
+            "6ac0deb7730ed64db1b52c9a"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6ac0deb7730ed64db1b52c8c",
+            "6ac0deb7730ed64db1b52c8d",
+            "6ac0deb7730ed64db1b52cbc",
+            "6ac0deb7730ed64db1b52c87",
+            "6ac0deb7730ed64db1b52c9a"
+          ],
+          "e2e_ms": 2404.1072000018175,
+          "failure": false,
+          "answer": "Hello Aarav! That is a very interesting question. It helps us understand just how powerful electricity is compared to gravity when we look at the tiny particles that make up everything around us.\n\nTo answer your question: the ratio of the magnitude of the electric force to the gravitational force between two protons is approximately **$1.3 \\times 10^{36}$**.\n\nTo give you an idea of how huge this number is, it's a 1 followed by 36 zeros! This tells us that the electric force is **enormously stronger** than the gravitational force.\n\nHere is a simple way to think about it:\n\n1. **Gravity** is like a very gentle pull. It is strong enough to keep the Earth orbiting the Sun because planets are massive, but between two tiny protons, it is almost nothing.\n2. **Electric Force** is like a powerful spring. Because protons have a positive charge, they push each other away with incredible strength.\n\n**A Quick Example:**\nImagine you have a tiny grain of sand and a giant mountain. Gravity is like the weight of that grain of sand, while the electric force is like the weight of the entire mountain! In the world of atoms, gravity is so weak that scientists often ignore it completely because the electric force does all the heavy lifting.\n\n**Just to make sure we're on the same page, Aarav: If two protons are near each other, do you think they will pull toward each other (attract) or push away from each other (repel) because of their electric charge?**",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "the ratio of the magnitude of the electric force to the gravitational force between two protons is approximately 1.3 × 10^36",
+              "supported": true
+            },
+            {
+              "text": "the electric force is enormously stronger than the gravitational force",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "1.3 × 1036",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "numerical"
+        },
+        {
+          "config": "rag_top3_0.5",
+          "retrieval_ms": 80.65470000110508,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6ac0deb7730ed64db1b52c8c",
+            "6ac0deb7730ed64db1b52c8d",
+            "6ac0deb7730ed64db1b52cbc",
+            "6ac0deb7730ed64db1b52c87",
+            "6ac0deb7730ed64db1b52c9a"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6ac0deb7730ed64db1b52c8c",
+            "6ac0deb7730ed64db1b52c8d",
+            "6ac0deb7730ed64db1b52cbc"
+          ],
+          "e2e_ms": 2645.063100000698,
+          "failure": false,
+          "answer": "Hello Aarav! That is a very interesting question. It helps us understand why some forces in nature are much more powerful than others.\n\nTo answer your question: The ratio of the magnitude of the electric force to the gravitational force between two protons is approximately **$1.3 \\times 10^{36}$**.\n\nNow, that is a huge number! To help you understand what this means, let me explain it simply:\n\n1. **Electric Force:** This is the force that pushes two protons apart because they both have a positive charge (like two magnets of the same side pushing each other away).\n2. **Gravitational Force:** This is the force that pulls everything together because they have mass.\n\n**An Example to Help You Imagine:**\nImagine you have a tiny grain of sand on one side of the world and a giant mountain on the other. The electric force between two protons is so much stronger than the gravitational force that it's like comparing the weight of a single grain of sand to the weight of billions and billions of galaxies!\n\nIn short, while gravity keeps our feet on the ground and the planets orbiting the sun, on the level of tiny particles like protons, the electric force is the real \"boss\" and is enormously stronger.\n\n**Quick Check for you, Aarav:**\nIf the electric force is so much stronger than gravity, do you think the gravitational pull between two tiny protons is important when scientists study how atoms behave?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "The ratio of the magnitude of the electric force to the gravitational force between two protons is approximately 1.3 × 10^36.",
+              "supported": true
+            },
+            {
+              "text": "Electric force pushes two protons apart because they both have a positive charge.",
+              "supported": true
+            },
+            {
+              "text": "Gravitational force pulls everything together because they have mass.",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "1.3 × 1036",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "numerical"
+        }
+      ]
+    },
+    {
+      "id": "6acb91c398101a40f6db3368",
+      "question": "What is the definition of osmotic pressure according to the text?",
+      "configs": [
+        {
+          "config": "gemma_no_retrieval",
+          "retrieval_ms": null,
+          "retrieval_error": null,
+          "recall_at_5": null,
+          "mrr": null,
+          "context_precision_at_5": null,
+          "empty_retrieval": null,
+          "e2e_ms": 3203.3234999998967,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question. Since you are asking about the definition from your text, let me explain it in a way that is very easy to understand.\n\n**Osmotic pressure** is the minimum amount of pressure that needs to be applied to a solution to stop the flow of water (or another solvent) from a pure solvent into that solution through a semi-permeable membrane.\n\nTo make this simple, imagine a thin cloth (the membrane) separating a bowl of plain water from a bowl of very salty water. Naturally, the plain water will try to move toward the salty side to balance things out. The \"osmotic pressure\" is like a strong hand pushing down on the salty side to stop that water from entering.\n\n**A real-life example:**\nThink about how plants get water from the soil. The roots have a higher concentration of salts and sugars than the soil does. This creates osmotic pressure, which \"pulls\" the water from the ground into the roots, helping the plant grow tall!\n\nDoes that make sense, Aarav? To make sure we've got it, can you tell me: **In the example of the plant, does the water move from the soil into the root, or from the root into the soil?**",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [],
+          "faithfulness": null,
+          "quiz_choice": "The excess pressure that must be applied to a solution to prevent osmosis",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        },
+        {
+          "config": "rag_top5_0.3",
+          "retrieval_ms": 76.18640000146115,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 0.5,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6acb91c398101a40f6db3369",
+            "6acb91c398101a40f6db3368",
+            "6acb91c398101a40f6db3367",
+            "6acb91c398101a40f6db334d",
+            "6acb91c398101a40f6db336a"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6acb91c398101a40f6db3369",
+            "6acb91c398101a40f6db3368",
+            "6acb91c398101a40f6db3367",
+            "6acb91c398101a40f6db334d",
+            "6acb91c398101a40f6db336a"
+          ],
+          "e2e_ms": 2515.989700001228,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question. Understanding this will help you understand how plants drink water and even how we make pickles at home!\n\nAccording to the text, **osmotic pressure** is the extra pressure that must be applied to a solution to stop the flow of a solvent (like water) from moving into it through a semipermeable membrane.\n\nTo make this simpler, let's break it down:\n1. **The Process (Osmosis):** Normally, water likes to move from a place where there is a lot of pure water to a place where there is a concentrated solution (like salty water).\n2. **The \"Stop\" Button:** If we don't want the water to move, we have to push down on the solution side with some force.\n3. **The Definition:** The exact amount of pressure needed to just stop that flow of water is what we call the **osmotic pressure**.\n\n**A Real-Life Example:**\nThink of a raw mango being put into a salty brine to make a pickle. Because the salt concentration is so high outside the mango, the water inside the mango moves out through its skin (which acts like a semipermeable membrane). This is why the mango shrivels up! If we could apply enough pressure to the salty brine, we could stop that water from leaving the mango.\n\nDoes that make sense, Aarav? To make sure you've got it, can you tell me: **In which direction does water usually flow during osmosis—from a dilute solution to a concentrated one, or the other way around?**",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "osmotic pressure is the extra pressure that must be applied to a solution to stop the flow of a solvent from moving into it through a semipermeable membrane",
+              "supported": true
+            },
+            {
+              "text": "water moves from a place where there is a lot of pure water to a place where there is a concentrated solution",
+              "supported": true
+            },
+            {
+              "text": "the exact amount of pressure needed to just stop that flow of water is called the osmotic pressure",
+              "supported": true
+            },
+            {
+              "text": "a raw mango placed in concentrated salt solution loses water via osmosis and shrivels",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "The excess pressure that must be applied to a solution to prevent osmosis",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        },
+        {
+          "config": "rag_top3_0.5",
+          "retrieval_ms": 76.18640000146115,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 0.5,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6acb91c398101a40f6db3369",
+            "6acb91c398101a40f6db3368",
+            "6acb91c398101a40f6db3367",
+            "6acb91c398101a40f6db334d",
+            "6acb91c398101a40f6db336a"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6acb91c398101a40f6db3369",
+            "6acb91c398101a40f6db3368",
+            "6acb91c398101a40f6db3367"
+          ],
+          "e2e_ms": 2319.6209000016097,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question to start with. \n\nAccording to the text, **osmotic pressure** is the extra (excess) pressure that must be applied to a solution to stop osmosis. In simpler terms, it is the pressure needed to prevent solvent molecules (like water) from flowing through a semipermeable membrane into the solution.\n\nTo help you visualize this, imagine a thin cloth that lets water through but stops larger grains of salt from passing. If you have pure water on one side and salty water on the other, the pure water will naturally try to push through the cloth into the salty side. The \"osmotic pressure\" is like pushing back on the salty water side with enough force to stop that flow from happening!\n\nDoes that make sense, Aarav? To make sure we've got it, can you tell me in your own words: what happens if we don't apply this pressure and just leave the solvent and solution separated by a semipermeable membrane?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "osmotic pressure is the extra (excess) pressure that must be applied to a solution to stop osmosis",
+              "supported": true
+            },
+            {
+              "text": "it is the pressure needed to prevent solvent molecules from flowing through a semipermeable membrane into the solution",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "The excess pressure that must be applied to a solution to prevent osmosis",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "definition"
+        }
+      ]
+    },
+    {
+      "id": "6ac0deb7730ed64db1b52cb4",
+      "question": "What is the flux through the side of the cylinder?",
+      "configs": [
+        {
+          "config": "gemma_no_retrieval",
+          "retrieval_ms": null,
+          "retrieval_error": null,
+          "recall_at_5": null,
+          "mrr": null,
+          "context_precision_at_5": null,
+          "empty_retrieval": null,
+          "e2e_ms": 2533.324599999105,
+          "failure": false,
+          "answer": "Namaste, Aarav! That is a very interesting question. Flux might sound like a big, scary word, but it's actually a very simple idea once we imagine it with something from our daily lives.\n\nImagine you have a handheld fan or a window, and a gentle breeze is blowing. **Flux** is simply a measure of \"how much\" of something (like air, water, or an electric field) is passing through a specific area. \n\nTo find the flux through the side (the curved part) of a cylinder, we look at two main things:\n1. **The Strength:** How strong is the field (like how fast the wind is blowing)?\n2. **The Direction:** Is the field blowing straight through the side, or is it just sliding along the surface?\n\n**Here is a simple example:**\nImagine a hollow bamboo pipe. If you blow air straight through the open ends, no air is escaping through the side walls of the bamboo. In this case, the flux through the side is **zero** because the air isn't crossing the boundary. But, if the bamboo pipe had tiny holes in the sides and air leaked out, that would be flux!\n\nTo give you the exact mathematical answer, I need to know one thing: **Is the field (like an electric field) pointing outwards from the center, or is it moving in a straight line across the cylinder?**\n\nTell me a bit more about the problem you are solving, or let me know if this \"bamboo pipe\" example makes sense to you!",
+          "error": null,
+          "correct": false,
+          "relevant": true,
+          "language_match": true,
+          "claims": [],
+          "faithfulness": null,
+          "quiz_choice": "zero",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "factual"
+        },
+        {
+          "config": "rag_top5_0.3",
+          "retrieval_ms": 75.02949999980046,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6ac0deb7730ed64db1b52cb4",
+            "6ac0deb7730ed64db1b52cb6",
+            "6ac0deb7730ed64db1b52cb1",
+            "6ac0deb7730ed64db1b52ca1",
+            "6ac0deb7730ed64db1b52cc4"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6ac0deb7730ed64db1b52cb4",
+            "6ac0deb7730ed64db1b52cb6",
+            "6ac0deb7730ed64db1b52cb1",
+            "6ac0deb7730ed64db1b52ca1",
+            "6ac0deb7730ed64db1b52cc4"
+          ],
+          "e2e_ms": 2955.997600000046,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question. To understand this, let's first imagine something simple from your daily life.\n\nImagine you are holding a hollow pipe (like a PVC water pipe) and you are blowing air straight through it from one end to the other. The air is moving in a straight line. Does any air leak out through the curved walls of the pipe? No, because the air is moving parallel to the walls, not pushing *through* them.\n\nIn physics, **Electric Flux** is very similar. It is a measure of how many electric field lines \"cross\" or \"pierce\" through a surface.\n\nHere is the step-by-step explanation for the cylinder:\n\n1. **Direction of the Field:** In the example you are looking at, the electric field ($\\mathbf{E}$) is moving in a straight line, parallel to the axis of the cylinder.\n2. **The Side Wall:** The curved side of the cylinder is like the wall of that pipe. At every point on this curved surface, the electric field lines are running *alongside* the surface, not passing *through* it.\n3. **The Angle:** Because the field is perpendicular to the \"normal\" (the direction pointing straight out from the surface), the flux is zero.\n\n**So, the flux through the side of the cylinder is zero.**\n\nDoes that make sense, Aarav? To make sure you've got it, tell me: if the electric field lines were moving sideways (perpendicular to the cylinder) instead of straight through it, do you think the flux through the side would still be zero?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "The electric field (E) is moving in a straight line, parallel to the axis of the cylinder.",
+              "supported": true
+            },
+            {
+              "text": "At every point on the curved surface, the electric field lines are running alongside the surface, not passing through it.",
+              "supported": true
+            },
+            {
+              "text": "The field is perpendicular to the 'normal' (the direction pointing straight out from the surface).",
+              "supported": true
+            },
+            {
+              "text": "The flux through the side of the cylinder is zero.",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "zero",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "factual"
+        },
+        {
+          "config": "rag_top3_0.5",
+          "retrieval_ms": 75.02949999980046,
+          "retrieval_error": null,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "context_precision_at_5": 0.2,
+          "retrieved_ids": [
+            "6ac0deb7730ed64db1b52cb4",
+            "6ac0deb7730ed64db1b52cb6",
+            "6ac0deb7730ed64db1b52cb1",
+            "6ac0deb7730ed64db1b52ca1",
+            "6ac0deb7730ed64db1b52cc4"
+          ],
+          "empty_retrieval": false,
+          "prompt_chunk_ids": [
+            "6ac0deb7730ed64db1b52cb4",
+            "6ac0deb7730ed64db1b52cb6",
+            "6ac0deb7730ed64db1b52cb1"
+          ],
+          "e2e_ms": 2338.047999999617,
+          "failure": false,
+          "answer": "Hello Aarav! That is a great question. To understand this, let's first imagine what \"flux\" is in a simple way.\n\nImagine you are holding a hula hoop (or a circular ring made of bamboo) in front of a flowing stream of water. If you hold the ring flat against the current, the water flows straight through it. But if you turn the ring sideways (perpendicular), the water just slides past the edges, and nothing actually goes *through* the hoop.\n\nIn physics, **electric flux** is very similar. It is the amount of electric field passing through a surface.\n\nFor the side (the curved part) of the cylinder in your lesson:\n1. The electric field lines are moving straight across (like the water in the stream).\n2. The \"surface\" of the curved side of the cylinder is pointing outward, which means it is perpendicular to those field lines.\n3. Because the field lines are just sliding past the side of the cylinder rather than passing *through* it, the flux is **zero**.\n\n**In short: The flux through the side of the cylinder is zero because the electric field is perpendicular to the surface at every point on the side.**\n\nDoes that make sense, Aarav? To make sure we've got it, tell me: if the electric field lines were moving perfectly parallel to the surface (just skimming the surface), would any flux go through it?",
+          "error": null,
+          "correct": true,
+          "relevant": true,
+          "language_match": true,
+          "claims": [
+            {
+              "text": "Electric flux is the amount of electric field passing through a surface.",
+              "supported": true
+            },
+            {
+              "text": "The electric field lines are moving straight across the cylinder.",
+              "supported": true
+            },
+            {
+              "text": "The surface of the curved side of the cylinder is pointing outward, which means it is perpendicular to those field lines.",
+              "supported": true
+            },
+            {
+              "text": "The flux through the side of the cylinder is zero.",
+              "supported": true
+            },
+            {
+              "text": "The flux through the side of the cylinder is zero because the electric field is perpendicular to the surface at every point on the side.",
+              "supported": true
+            }
+          ],
+          "faithfulness": 1.0,
+          "quiz_choice": "zero",
+          "quiz_completed": true,
+          "quiz_correct": true,
+          "question_type": "factual"
+        }
+      ]
+    }
+  ]
+}

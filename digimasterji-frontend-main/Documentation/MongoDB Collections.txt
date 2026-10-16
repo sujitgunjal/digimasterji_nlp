@@ -1,0 +1,98 @@
+Master users collection
+
+{
+  "_id": "ObjectId",
+  "email": "parent@example.com",
+  "phone_number": "+919876543210", // Crucial for rural/mobile-first areas
+  "password_hash": "bcrypt_string...",
+  "full_name": "Ramesh Kumar",
+  "registered_at": "ISODate",
+  "last_login": "ISODate",
+  "settings": {
+    "sync_enabled": true,
+    "data_saver_mode": true // For low bandwidth
+  }
+}
+
+Student profile collection
+{
+  "_id": "ObjectId",
+  "master_user_id": "ObjectId(Ref: users)", 
+  "name": "Aarav",
+  "age": 12,
+  "grade_level": "6th",
+  "preferred_language": "Hindi", // Key for Ollama system prompt
+  "gamification": {
+    "xp": 1500,
+    "current_streak_days": 3,
+    "last_activity_date": "ISODate", // To calculate streak breaks
+    "badges": ["math_wizard", "early_bird"]
+  },
+  "learning_preferences": {
+    "voice_enabled": true, // Default to TTS
+  }
+}
+
+conversation
+{
+  "_id": "ObjectId",
+  "profile_id": "ObjectId(Ref: profiles)",
+  "title": "Photosynthesis Explanation",
+  "subject_tag": "Biology", // derived by Ollama
+  "created_at": "ISODate",
+  "updated_at": "ISODate",
+}
+
+messages
+
+{
+  "_id": "ObjectId",
+  "conversation_id": "ObjectId(Ref: conversations)",
+  "profile_id": "ObjectId(Ref: profiles)", // for quick indexing
+  "role": "user", // or "assistant"
+  "content": "Paudhe khana kaise banate hain?", // Original text
+  "content_translated": "How do plants make food?", // Optional: English reference for RAG
+  "audio_url": "s3_link_or_local_path", // If storing voice notes
+  "timestamp": "ISODate",
+  "rag_references": [ // IDs of knowledge base chunks used to answer this
+    "ObjectId(Ref: knowledge_base)" 
+  ]
+}
+
+quizzes
+
+{
+  "_id": "ObjectId",
+  "profile_id": "ObjectId(Ref: profiles)",
+  "source_conversation_id": "ObjectId(Ref: conversations)", // Context source
+  "topic": "Photosynthesis",
+  "created_at": "ISODate",
+  "status": "pending", // pending, completed
+  "score": 0,
+  "questions": [
+    {
+      "question_text": "What gas do plants release?",
+      "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+      "correct_answer": "Oxygen",
+      "user_answer": null
+    },
+    {
+      "question_text": "Suraj ki roshni kyu zaruri hai?",
+      "options": ["Energy ke liye", "Thand ke liye", "Sone ke liye"],
+      "correct_answer": "Energy ke liye",
+      "user_answer": null
+    }
+  ]
+}
+
+rag knowledge base
+
+{
+  "_id": "ObjectId",
+  "title": "Newton's First Law",
+  "content_chunk": "An object remains at rest...", // The text fed to LLM
+  "subject": "Physics",
+  "language": "en", // You might store regional versions too
+  "vector_embedding": [0.12, -0.45, ...], // Vector array for semantic search
+  "tags": ["force", "motion", "mechanics"]
+}

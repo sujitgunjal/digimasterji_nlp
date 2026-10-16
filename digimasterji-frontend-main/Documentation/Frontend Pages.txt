@@ -1,0 +1,102 @@
+Here is the comprehensive list of frontend pages (routes) you will need to build in React (Vite). I have categorized them by the user flow.
+
+### 1\. Public & Onboarding (Unauthenticated)
+
+These pages are accessible to anyone before logging in.
+
+  * **Landing Page (`/`)**
+      * **Purpose:** The "Sales" page. Explains what the app is.
+      * **Key Elements:** Hero section ("Learn Science in Your Language"), Feature highlights (Offline mode, AI Tutor), "Get Started" CTA button, Language toggle (English/Hindi/Regional).
+  * **Login (`/login`)**
+      * **Purpose:** For existing Master Accounts (Parents/Teachers).
+      * **Key Elements:** Email/Phone input, Password, "Forgot Password" link.
+  * **Register (`/register`)**
+      * **Purpose:** Create a new Master Account.
+      * **Key Elements:** Name, Phone Number (verified via OTP ideally), Email, Password setup.
+
+### 2\. Master Account Management (The "Netflix" Layer)
+
+These pages appear after the parent logs in but before a specific student is selected.
+
+  * **Profile Selection (`/profiles`)**
+      * **Purpose:** The "Who is learning today?" screen.
+      * **Key Elements:** Grid of student avatars, "Add Profile" button, "Manage Profiles" toggle.
+  * **Create/Edit Profile (`/profiles/manage`)**
+      * **Purpose:** Add a new student or edit an existing one.
+      * **Key Elements:** Name input, Avatar selector, Grade level dropdown, Preferred Language selector (critical for Ollama system prompt).
+  * **Master Settings (`/settings`)**
+      * **Purpose:** Global app settings.
+      * **Key Elements:** Subscription status, Offline data management (button to "Clear Cache" or "Force Sync"), Parent dashboard (usage stats).
+
+### 3\. Student Learning Interface (The Core App)
+
+Once a profile is selected, the UI shifts to the student's context.
+
+  * **Student Dashboard (`/dashboard`)**
+      * **Purpose:** The central hub.
+      * **Key Elements:**
+          * **Daily Streak Flame:** Visual counter.
+          * **"Continue Learning":** Button to resume the last chat.
+          * **Recommended Topics:** Cards suggesting new STEM topics based on grade.
+          * **Pending Quizzes:** Notification badge.
+  * **Chat Interface (`/chat/:chatId`)**
+      * **Purpose:** The main interaction screen with the AI.
+      * **Key Elements:**
+          * **Sidebar:** History of previous chats (collapsible).
+          * **Message Area:** User bubbles and AI bubbles.
+          * **Input Zone:** Text box + **Big Microphone Button** (for speech-to-text).
+          * **Audio Controls:** Play button on AI messages (Text-to-Speech).
+  * **New Chat / Topic Selection (`/chat/new`)**
+      * **Purpose:** Starting a fresh session.
+      * **Key Elements:** Pre-made prompt chips (e.g., "Explain Photosynthesis," "Math Help"), or a blank input field.
+
+### 4\. Assessment & Gamification
+
+  * **Quiz Library (`/quizzes`)**
+      * **Purpose:** List of all available quizzes (Generated & Past).
+      * **Key Elements:** Tabs for "To Do" and "Completed". Cards showing Topic, Difficulty, and Score.
+  * **Active Quiz View (`/quizzes/:quizId/take`)**
+      * **Purpose:** The actual interface for taking a test.
+      * **Key Elements:**
+          * One question per screen (better for focus).
+          * Big, tap-friendly option buttons.
+          * "Submit" button.
+          * **Result Modal:** Pops up at the end showing Score, XP earned, and a "Great Job\!" animation.
+  * **Progress & Badges (`/progress`)**
+      * **Purpose:** The "Trophy Room" to motivate students.
+      * **Key Elements:**
+          * **XP Progress Bar:** Distance to next level.
+          * **Badge Grid:** Unlocked badges (colored) vs. Locked badges (grayed out).
+          * **Leaderboard:** Comparison with siblings or global/class ranking.
+
+### 5\. Utility & System
+
+  * **Offline Fallback (`/offline`)**
+      * **Purpose:** Displayed if a user tries to access a cloud-only feature (like Sync) while offline.
+      * **Key Elements:** "You are offline" illustration, "Go to Saved Chats" button.
+  * **404 Not Found**
+      * **Purpose:** Generic error page.
+      * **Key Elements:** "Lost in Space" illustration, "Return Home" button.
+
+### Suggested Navigation Structure (React Router)
+
+For the student view, you will likely use a **Layout Wrapper** (Sidebar/Bottom Nav) that persists across these pages:
+
+```text
+/ (Public Layout)
+  ├── Landing
+  ├── Login
+  └── Register
+
+/app (Authenticated Layout)
+  ├── /profiles (Profile Selection)
+  ├── /settings (Master Settings)
+  │
+  └── /student (Student Layout - with Bottom Nav/Sidebar)
+      ├── /dashboard
+      ├── /chat
+      ├── /quizzes
+      └── /progress
+```
+
+Would you like me to create the **React Component structure** for the **Chat Interface**, specifically focusing on how to handle the *Microphone/Audio recording* functionality?
